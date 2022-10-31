@@ -1,4 +1,4 @@
-/* This is a stub for the Cafe class */
+/* Defines a cafe class that extends the building class */
 public class Cafe extends Building{
 
     private int nCoffeeOunces = 100; // The number of ounces of coffee remaining in inventory
@@ -6,11 +6,23 @@ public class Cafe extends Building{
     private int nCreams = 100; // The number of "splashes" of cream remaining in inventory
     private int nCups = 100; // The number of cups remaining in inventory
 
+    /**
+     * Constructs the cafe class object
+     * @param name the name of the cafe building
+     * @param address the address of the cafe building
+     * @param nFloors the number of floors the cafe building contains
+     */
     public Cafe(String name, String address, int nFloors) {
         super(name, address, nFloors);
         System.out.println("You have built a cafe: ☕");
     }
 
+    /**
+     * Updates the inventory as coffee is sold
+     * @param size number of ounces the sold coffee contains
+     * @param nSugarPackets number of sugar packets the sold coffee contains
+     * @param nCreams the number of creams the sold coffee contains
+     */
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
         if (this.nCoffeeOunces < size){
         restock(100, 0, 0, 0);}
@@ -26,6 +38,13 @@ public class Cafe extends Building{
         this.nCreams -= nCreams;
     }
 
+    /**
+     * Restocks the inventory by updating the values
+     * @param nCoffeeOunces amount of coffee ounces to restock
+     * @param nSugarPackets amount of sugar packets to restock
+     * @param nCreams amount of creams to restock
+     * @param nCups amount of cups to restock
+     */
     private void restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups){
         this.nCoffeeOunces += nCoffeeOunces;
         this.nSugarPackets += nSugarPackets;
@@ -33,7 +52,10 @@ public class Cafe extends Building{
         this.nCups += nCups; 
     }
 
-
+    /**
+     * Runs the main program
+     * @param args an empty string array
+     */
     public static void main(String[] args) {
        Cafe myCafe = new Cafe("Compass Cafe", "7 Neilson Drive", 1);
         myCafe.sellCoffee(12, 2, 3);
